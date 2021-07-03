@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/models/wallpaper_model.dart';
 import 'package:wallpaper_app/views/image_view.dart';
@@ -9,8 +7,12 @@ Widget brandName() {
     text: TextSpan(
       style: TextStyle(fontSize: 18),
       children: const <TextSpan>[
-        TextSpan(text: 'Wallpaper', style: TextStyle(fontWeight: FontWeight.w700,color: Colors.black)),
-        TextSpan(text: 'Mania', style: TextStyle(fontWeight: FontWeight.w700,color: Colors.blue)),
+        TextSpan(
+            text: 'Wallpaper',
+            style: TextStyle(fontWeight: FontWeight.w700, color: Colors.black)),
+        TextSpan(
+            text: 'Mania ',
+            style: TextStyle(fontWeight: FontWeight.w700, color: Colors.blue)),
       ],
     ),
   );
@@ -29,17 +31,23 @@ Widget WallpaperList({List<WallpaperModel> wallpapers, context}) {
       children: wallpapers.map((wallpapers) {
         return GridTile(
           child: GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageView(
-                imageUrl: wallpapers.src.portrait,
-              )));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ImageView(
+                            imageUrl: wallpapers.src.portrait,
+                          )));
             },
             child: Hero(
               tag: wallpapers.src.portrait,
               child: Container(
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.network(wallpapers.src.portrait,fit: BoxFit.cover,)),
+                    child: Image.network(
+                      wallpapers.src.portrait,
+                      fit: BoxFit.cover,
+                    )),
               ),
             ),
           ),
